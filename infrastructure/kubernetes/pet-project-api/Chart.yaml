@@ -1,0 +1,17 @@
+apiVersion: v2
+name: pet-project-api
+description: A Helm chart for Pet Project API - Simple Go REST API
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - api
+  - rest
+  - go
+  - fintech
+home: https://github.com/pet-project
+sources:
+  - https://github.com/pet-project/api
+maintainers:
+  - name: Pet Project Team
+    email: team@pet-project.com

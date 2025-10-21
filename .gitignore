@@ -1,0 +1,131 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+*.tfplan
+*.tfplan.*
+
+# Terraform variables (sensitive)
+terraform.tfvars
+*.auto.tfvars
+terraform.tfvars.local
+*.auto.tfvars.local
+
+# SSH Keys and Certificates
+*.pem
+*.key
+*.crt
+*.csr
+pet-project-ssh-key.pem
+pet-project-ssh-key.pub
+id_rsa*
+*.pub
+~/.ssh/
+.ssh/
+
+# AWS
+.aws/
+aws-credentials
+*.pem
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.staging
+
+# Secrets and sensitive files
+secrets/
+*.secret
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+log/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Kubernetes
+kubeconfig
+*.kubeconfig
+.kube/
+
+# Docker
+.dockerignore
+
+# Monitoring
+prometheus_data/
+grafana_data/
+
+# Local development
+local/
+dev/
+test/

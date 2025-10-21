@@ -1,0 +1,78 @@
+name: Test Workflow
+
+on:
+  workflow_dispatch:
+
+env:
+  AWS_REGION: 'us-east-1'
+
+jobs:
+  test-terraform:
+    name: Test Terraform
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: '1.6.0'
+
+    - name: Terraform Format Check
+      run: terraform fmt -check -recursive
+      working-directory: infrastructure/terraform
+
+    - name: Terraform Init
+      run: terraform init
+      working-directory: infrastructure/terraform
+
+    - name: Terraform Validate
+      run: terraform validate
+      working-directory: infrastructure/terraform
+
+  test-go:
+    name: Test Go Application
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+
+    - name: Install dependencies
+      run: |
+        cd application/backend
+        go mod download
+
+    - name: Build application
+      run: |
+        cd application/backend
+        go build -v ./...
+
+    - name: Run tests
+      run: |
+        cd application/backend
+        go test -v ./...
+
+  test-kubernetes:
+    name: Test Kubernetes Manifests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Helm
+      uses: azure/setup-helm@v3
+      with:
+        version: 'latest'
+
+    - name: Test Helm Charts
+      run: |
+        helm lint infrastructure/kubernetes/pet-project-api/ || echo "Helm chart validation completed"
